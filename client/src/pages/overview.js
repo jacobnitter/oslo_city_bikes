@@ -5,7 +5,6 @@ const overview = () => {
   return (
     <div>
       <Station />
-      <h1>Hei</h1>
     </div>
   );
 };
