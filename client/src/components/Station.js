@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "./StylingCard";
 
 const Station = () => {
   const [freeBikes, setFreeBikes] = useState([]);
@@ -70,20 +71,19 @@ const Station = () => {
       ]);
     }
     console.log(completeStations);
-    console.log("jacob");
   };
 
   return (
     <div>
-      <ul>
-        {completeStations.map(station => (
-          <div>
-            <li>
-              {station.name} {station.free_docks} {station.free_bikes}
-            </li>
-          </div>
-        ))}
-      </ul>
+      {completeStations.map(station => (
+        <div>
+          <Card
+            name={station.name}
+            free_bikes={station.free_bikes}
+            free_docks={station.free_docks}
+          />
+        </div>
+      ))}
     </div>
   );
 };
