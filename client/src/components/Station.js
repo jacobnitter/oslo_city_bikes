@@ -1,46 +1,48 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Station = () => {
-  const [freeBikes, setFreeBikes] = useState({});
-  const [freeDocks, setFreeDocks] = useState({});
+  const [freeBikes, setFreeBikes] = useState([]);
+  const [freeDocks, setFreeDocks] = useState([]);
 
-  useEffect(() => {
-    fetch("https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json")
-      .then(res => res.json())
-      .then(result => {
-        setFreeBikes([]);
-        setFreeDocks([]);
-        handleFreeDocks(result.data.stations);
-        handleFreeBikes(result.data.stations);
-      });
+  useEffect(async () => {
+    const response = await axios(
+      "https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json"
+    );
+    setFreeBikes([]);
+    setFreeDocks([]);
+    handleFreeBikes(response.data.data.stations);
+    handleFreeDocks(response.data.data.stations);
   }, []);
 
   const handleFreeBikes = result => {
-    for (var i = 0; i < result.length; i++) {
-      setFreeBikes(freeBikes => [
-        ...freeBikes,
-        { ["free_bikes"]: result[i].num_bikes_available }
-      ]);
+    console.log(result[0]);
+    for (let i = 0; i < result.length; i++) {
+      let bike = {
+        free_bikes: result[i].num_bikes_available
+      };
+      setFreeBikes(freeBikes => [...freeBikes, bike]);
     }
-    console.log(freeBikes);
-    console.log("hei");
   };
 
   const handleFreeDocks = result => {
-    for (var i = 0; i < result.length; i++) {
-      setFreeDocks(freeDocks => [
-        ...freeDocks,
-        { ["free_docks"]: result[i].num_docks_available }
-      ]);
+    console.log(result[0]);
+    for (let i = 0; i < result.length; i++) {
+      let dock = {
+        free_docks: result[i].num_docks_available
+      };
+      setFreeDocks(freeDocks => [...freeDocks, dock]);
     }
     console.log(freeDocks);
-    console.log("hallo");
   };
-
   return (
     <div>
-      <h1>HALLA PÅ BALLA</h1>
+      <ul>
+        {freeDocks.map(dock => (
+          <li>{dock.free_docks}</li>
+        ))}
+      </ul>
     </div>
   );
 };
