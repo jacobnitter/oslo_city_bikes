@@ -1,10 +1,10 @@
 import "./App.css";
-import Station from "./components/Station";
+import Overview from "./pages/overview";
 
 function App() {
   return (
     <div>
-      <Station />
+      <Overview />
     </div>
   );
 }
