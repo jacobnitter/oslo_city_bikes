@@ -1,11 +1,12 @@
 import React from "react";
 import Station from "../components/Station";
 import Oslo from "../images/Oslo.jpg";
+import "../App.css";
 
 const overview = () => {
   return (
     <div>
-      <h1 styles={{ alignItems: "center" }}>Oslo City Bike</h1>
+      <h1>Oslo City Bike</h1>
       <Station />
     </div>
   );

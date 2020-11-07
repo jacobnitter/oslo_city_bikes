@@ -39,9 +39,9 @@ const StylingCard = props => {
         </Typography>
         <Typography className={classes.pos} color="textSecondary"></Typography>
         <Typography variant="body2" component="p">
-          Antallledige sykler: {props.free_bikes}
+          Number of free bikes: {props.free_bikes}
           <br />
-          Antall ledige plasser: {props.free_docks}
+          Number of free docks: {props.free_docks}
         </Typography>
       </CardContent>
     </Card>

@@ -23,8 +23,8 @@ const Station = () => {
     axios
       .get("https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json")
       .then(response => {
-        /* setFreeBikes([]);
-        setFreeDocks([]);*/
+        setFreeBikes([]);
+        setFreeDocks([]);
         handleFreeBikes(response.data.data.stations);
         handleFreeDocks(response.data.data.stations);
       });
@@ -33,8 +33,8 @@ const Station = () => {
     );
 
     console.log(response.data.data.stations);
-    /*setStationName([]);
-    setCompleteStations([]);*/
+    setStationName([]);
+    setCompleteStations([]);
     handleStationName(response.data.data.stations);
     setNameWithDocksAndBikes();
   };
@@ -73,14 +73,25 @@ const Station = () => {
 
   return (
     <div>
-      <button onClick={handleClick}>Hent alle stasjoner</button>
+      <button onClick={handleClick}>Get all stations</button>
       {completeStations.map(station => (
-        <div>
-          <Card
-            name={station.name}
-            free_docks={station.free_docks}
-            free_bikes={station.free_bikes}
-          />
+        <div style={{ maxWidth: 700 }}>
+          <h2 style={{ backgroundColor: "#B3E5FC" }}>{station.name}</h2>
+          <h3
+            style={{
+              backgroundColor: station.free_bikes > 0 ? "#81C784" : "#E57373"
+            }}
+          >
+            {" "}
+            Number of free bikes: {station.free_bikes}
+          </h3>
+          <h3
+            style={{
+              backgroundColor: station.free_docks > 0 ? "#81C784" : "#E57373"
+            }}
+          >
+            Number of free docks: {station.free_docks}
+          </h3>
         </div>
       ))}
     </div>
