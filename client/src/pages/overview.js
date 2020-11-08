@@ -5,7 +5,7 @@ import "../App.css";
 
 const overview = () => {
   return (
-    <div>
+    <div style={{ margin: "2em" }}>
       <h1>Oslo City Bike</h1>
       <Station />
     </div>

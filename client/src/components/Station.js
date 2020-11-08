@@ -9,6 +9,11 @@ const Station = () => {
   const [stationName, setStationName] = useState([]);
   const [completeStations, setCompleteStations] = useState([]);
 
+  useEffect(() => {
+    console.log("cs: ", completeStations);
+    setNameWithDocksAndBikes();
+  }, [stationName]);
+
   const handleFreeBikes = result => {
     console.log(result[0]);
     for (let i = 0; i < result.length; i++) {
@@ -23,8 +28,6 @@ const Station = () => {
     axios
       .get("https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json")
       .then(response => {
-        setFreeBikes([]);
-        setFreeDocks([]);
         handleFreeBikes(response.data.data.stations);
         handleFreeDocks(response.data.data.stations);
       });
@@ -33,22 +36,22 @@ const Station = () => {
     );
 
     console.log(response.data.data.stations);
-    setStationName([]);
-    setCompleteStations([]);
     handleStationName(response.data.data.stations);
-    setNameWithDocksAndBikes();
   };
 
   const handleFreeDocks = result => {
     console.log(result[0]);
+    let listOfDocks = [];
     for (let i = 0; i < result.length; i++) {
       let dock = {
         free_docks: result[i].num_docks_available
       };
-      setFreeDocks(freeDocks => [...freeDocks, dock]);
+      listOfDocks.push(dock);
     }
+    setFreeDocks(listOfDocks);
     console.log(freeDocks);
   };
+
   const handleStationName = result => {
     for (let i = 0; i < result.length; i++) {
       setStationName(stationName => [...stationName, result[i].name]);
@@ -58,22 +61,25 @@ const Station = () => {
   };
 
   const setNameWithDocksAndBikes = () => {
+    console.log("stationNames: ", stationName);
+    console.log("freeDocks", freeDocks);
+    let listOfCompleteStations = [];
     for (let i = 0; i < stationName.length; i++) {
       let completeStation = {
         name: stationName[i],
         free_docks: freeDocks[i].free_docks,
         free_bikes: freeBikes[i].free_bikes
       };
-      setCompleteStations(completeStations => [
-        ...completeStations,
-        completeStation
-      ]);
+      listOfCompleteStations.push(completeStation);
     }
+    console.log("LOCS: ", listOfCompleteStations);
+    setCompleteStations(listOfCompleteStations);
   };
 
   return (
     <div>
       <button onClick={handleClick}>Get all stations</button>
+      <h1>Freedocks: {freeDocks.length}</h1>
       {completeStations.map(station => (
         <div style={{ maxWidth: 700 }}>
           <h2 style={{ backgroundColor: "#B3E5FC" }}>{station.name}</h2>

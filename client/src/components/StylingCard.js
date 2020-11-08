@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     maxWidth: 700,
-    margin: "2em"
+    marginTop: "2em"
   },
   bullet: {
     display: "inline-block",
@@ -39,9 +39,21 @@ const StylingCard = props => {
         </Typography>
         <Typography className={classes.pos} color="textSecondary"></Typography>
         <Typography variant="body2" component="p">
-          Number of free bikes: {props.free_bikes}
+          <div
+            style={{
+              backgroundColor: props.free_bikes > 0 ? "#81C784" : "#E57373"
+            }}
+          >
+            Number of free bikes: {props.free_bikes}
+          </div>
           <br />
-          Number of free docks: {props.free_docks}
+          <div
+            style={{
+              backgroundColor: props.free_docks > 0 ? "#81C784" : "#E57373"
+            }}
+          >
+            Number of free docks : {props.free_docks}
+          </div>
         </Typography>
       </CardContent>
     </Card>
