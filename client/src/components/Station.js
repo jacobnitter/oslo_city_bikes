@@ -33,8 +33,8 @@ const Station = () => {
 
   const handleFreeBikes = result => {
     //Creates an object with the attribute free_bikes. Adds all the stations free bikes to a list and set freeBikes as this list.
+    let listOfBikes = [];
     for (let i = 0; i < result.length; i++) {
-      let listOfBikes = [];
       let bike = {
         free_bikes: result[i].num_bikes_available //Creates an object for each station with the number of free bikes at the current station.
       };
