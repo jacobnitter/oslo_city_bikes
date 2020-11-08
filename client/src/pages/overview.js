@@ -10,7 +10,7 @@ const overview = () => {
         margin: "2em"
       }}
     >
-      <h1 style={{ color: "yellow" }}>Oslo City Bike</h1>
+      <h1 style={{ color: "red" }}>Oslo City Bike</h1>
       <Station />
     </div>
   );

@@ -71,33 +71,18 @@ const Station = () => {
   return (
     <div>
       <button onClick={handleClick}>Get all stations</button>
-      {completeStations.map(station => (
-        <div style={{ maxWidth: 700 }}>
-          <Card
-            name={station.name}
-            free_docks={station.free_docks}
-            free_bikes={station.free_bikes}
-          />
-        </div>
-      ))}
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {completeStations.map(station => (
+          <div style={{ maxWidth: 700, flex: "1 0 21%", margin: "8px" }}>
+            <Card
+              name={station.name}
+              free_docks={station.free_docks}
+              free_bikes={station.free_bikes}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 export default Station;
-
-/*<h2 style={{ backgroundColor: "#B3E5FC" }}>{station.name}</h2>
-<h3
-  style={{
-    backgroundColor: station.free_bikes > 0 ? "#81C784" : "#E57373"
-  }}
->
-  {" "}
-  Number of free bikes: {station.free_bikes}
-</h3>
-<h3
-  style={{
-    backgroundColor: station.free_docks > 0 ? "#81C784" : "#E57373"
-  }}
->
-  Number of free docks: {station.free_docks}
-</h3>*/
