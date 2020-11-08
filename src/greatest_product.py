@@ -23,4 +23,4 @@ def three_greatest_integers_product(integer_list):
 
     return greatest_number * second_greatest_number * third_greatest_number
 
-print(three_greatest_integers_product([1,2,3,4,5,5]))
+print(three_greatest_integers_product([1,10,2,6,5,3]))

@@ -29,11 +29,13 @@ const Station = () => {
         handleFreeBikes(response.data.data.stations);
         handleFreeDocks(response.data.data.stations);
       });
-    const response = await axios.get(
-      "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json"
-    );
-
-    handleStationName(response.data.data.stations);
+    axios
+      .get(
+        "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json"
+      )
+      .then(response => {
+        handleStationName(response.data.data.stations);
+      });
   };
 
   const handleFreeDocks = result => {
