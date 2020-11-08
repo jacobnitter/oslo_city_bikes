@@ -41,7 +41,7 @@ const StylingCard = props => {
         <Typography variant="body2" component="p">
           <div
             style={{
-              backgroundColor: props.free_bikes > 0 ? "#81C784" : "#E57373"
+              backgroundColor: props.free_bikes > 0 ? "#81C784" : "#E57373" //sets green color if there are any available bikes. red if not
             }}
           >
             Number of free bikes: {props.free_bikes}
@@ -49,7 +49,7 @@ const StylingCard = props => {
           <br />
           <div
             style={{
-              backgroundColor: props.free_docks > 0 ? "#81C784" : "#E57373"
+              backgroundColor: props.free_docks > 0 ? "#81C784" : "#E57373" //Sets green color if there are any available docks. red if not
             }}
           >
             Number of free docks : {props.free_docks}
