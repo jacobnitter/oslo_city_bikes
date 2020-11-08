@@ -5,8 +5,12 @@ import "../App.css";
 
 const overview = () => {
   return (
-    <div style={{ margin: "2em" }}>
-      <h1>Oslo City Bike</h1>
+    <div
+      style={{
+        margin: "2em"
+      }}
+    >
+      <h1 style={{ color: "yellow" }}>Oslo City Bike</h1>
       <Station />
     </div>
   );

@@ -3,7 +3,7 @@ import Overview from "./pages/overview";
 
 function App() {
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <Overview />
     </div>
   );

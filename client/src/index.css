@@ -4,6 +4,9 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./images/Oslo.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 code {
