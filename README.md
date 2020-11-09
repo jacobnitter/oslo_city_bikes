@@ -4,7 +4,8 @@
 
 To start the project you have to clone the project. Type this in the terminal
 
-#### `git clone git@github.com:jacobnitter/oslo_city_bikes.git` 
+#### `git clone git@github.com:jacobnitter/oslo_city_bikes.git` (SSH)
+#### `git clone https://github.com/jacobnitter/oslo_city_bikes.git`(HTTPS)
 
 After you have cloned the project you have to move in to the right folder. Write this in the terminal
 
